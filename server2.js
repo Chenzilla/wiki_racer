@@ -17,9 +17,6 @@ var startingNode = new Node(URL + input['start']);
 var targetNode = new Node(URL + input['end']);
 var target = input['end'];
 var found = false;
-var targetEnd;
-var startEnd;
-var path = [];
 startToVisit.enqueue(startingNode);
 targetToVisit.enqueue(targetNode);
 
@@ -43,74 +40,18 @@ async.whilst(
               console.log(href);
               console.log(target);
               console.log("START YUESSS");
-              if (targetVisited[href]){
-                startEnd = targetVisited[href];
-              }
               found = true;
               return false;
             }
             else if (startVisited[href]){
               // console.log("VISITED");
             } else {
-              console.log(URL + href);
+              // console.log(URL + href);
               var child = new Node(URL + href);
               child.parent = parent;
               parent.child = child;
               startVisited[href] = child;
               startToVisit.enqueue(child);
-            }
-          }
-        });
-      } else {
-        console.log("Error");
-      }
-      next();
-    });
-  },
-  function(err) {
-    console.log('DONE');
-  }
-)
-
-async.whilst(
-  function(){return (!targetToVisit.isEmpty() && !found)},
-  function(next){
-    parent = targetToVisit.dequeue();
-    console.log("TARGET Visiting new page:");
-    console.log(parent.data);
-    if (parent.parent){
-      console.log("TARGET The prior page was:");
-      console.log(parent.parent.data);
-    }
-    request(parent.data, function(error, response, html){
-      if(!error){
-        var $ = cheerio.load(html);
-        $('#mw-content-text p a').each(function(i, elem) {
-          if($(this).not("[title*='not exist']").attr('title')) {
-            var href = $(this).attr('href');
-            if (href == target || startVisited[href]) {
-              console.log(href);
-              console.log(target);
-              console.log("TARGET YUESSS");
-              if (startVisited[href]){
-                console.log("TARGET END START");
-                targetEnd = startVisited[href];
-                console.log(targetEnd);
-                console.log(targetEnd.print("TARGET PRINTING", []));
-                console.log(startVisited[href].print("TARGET REVERSE PRINTING", []));
-              }
-              found = true;
-              return false;
-            }
-            else if (targetVisited[href]){
-              // console.log("VISITED");
-            } else {
-              // console.log(URL + href);
-              var child = new Node(URL + href);
-              child.parent = parent;
-              parent.child = child;
-              targetVisited[href] = child;
-              targetToVisit.enqueue(child);
             }
           }
         });
