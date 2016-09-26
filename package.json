@@ -1,19 +1,17 @@
 {
-  "name": "human-api-interview",
+  "name": "Wiki Racer",
   "version": "1.0.0",
-  "description": "",
+  "description": "Web scraper that starts from a start article and attempts to reach the target article through breadth-first search.",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node Wikirace.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "async": "^2.0.1",
     "cheerio": "^0.22.0",
-    "express": "^4.14.0",
     "request": "^2.74.0",
-    "sync-request": "^3.0.1"
   }
 }

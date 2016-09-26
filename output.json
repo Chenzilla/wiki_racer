@@ -1,5 +1,9 @@
 {
-    "title": "Anchorman 2: The Legend Continues (2013)            ",
-    "release": "(2013)",
-    "rating": "\n6.3/10                "
+    "start": "https://en.wikipedia.org/wiki/Malaria",
+    "end": "https://en.wikipedia.org/wiki/International_Headache_Society",
+    "path": [
+        "https://en.wikipedia.org/wiki/Malaria",
+        "https://en.wikipedia.org/wiki/Headache",
+        "https://en.wikipedia.org/wiki/International_Headache_Society"
+    ]
 }
