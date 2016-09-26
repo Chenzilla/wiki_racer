@@ -9,9 +9,9 @@ A web scraper that attemtps to go from a starting article to an ending article t
 var fs = require('fs');
 var request = require('request');
 var cheerio = require('cheerio');
+var async = require('async');
 var Queue = require('./Queue.js');
 var Node = require('./Node.js');
-var async = require('async');
 
 var URL = "https://en.wikipedia.org"
 
